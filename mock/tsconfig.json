@@ -1,0 +1,35 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "dist",
+    "sourceMap": false,
+    "noEmitOnError": false,
+    "declaration": false,
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "target": "es5",
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "typeRoots": [
+      "../node_modules/@types"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./*"
+      ],
+    }
+  },
+  "include": [
+    "../src/app/model.d.ts",
+    "./**/*.ts"
+  ],
+  "files": [
+    "./index.ts"
+  ]
+}
