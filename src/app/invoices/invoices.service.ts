@@ -26,14 +26,27 @@ export class InvoicesService {
   }
 
   fetchInvoiceList() {
-    return this.http
+    this.http
       .get(environment.backend.baseUrl + "invoice-list")
       .subscribe((res) => this._invoiceList.next(res as Invoice[]));
   }
 
   fetchVendorList() {
-    return this.http
-        .get(environment.backend.baseUrl + "vendor-list")
-        .subscribe((res) => this._vendorList.next(res as Vendor[]));
+    this.http
+      .get(environment.backend.baseUrl + "vendor-list")
+      .subscribe((res) => this._vendorList.next(res as Vendor[]));
+  }
+
+  addInvoice(invoice: Invoice) {
+    const obs = this.http.post(
+      environment.backend.baseUrl + "add-invoice",
+      invoice
+    );
+
+    obs.subscribe((res) => {
+      if (res) this.fetchInvoiceList();
+    });
+
+    return obs;
   }
 }

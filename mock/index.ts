@@ -27,3 +27,8 @@ app.get("/invoice-list", (req: Request, res: Response) => {
 app.get("/vendor-list", (req: Request, res: Response) => {
   return res.json(vendors);
 });
+
+app.post("/add-invoice", (req: Request, res: Response) => {
+  invoices.push(req.body);
+  return res.json(true);
+});

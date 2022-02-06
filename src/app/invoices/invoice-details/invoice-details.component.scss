@@ -1,0 +1,13 @@
+:host {
+  width: 100%;
+}
+
+.invoice-details__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.invoice-details__form-buttons {
+  display: flex;
+  justify-content: space-between;
+}

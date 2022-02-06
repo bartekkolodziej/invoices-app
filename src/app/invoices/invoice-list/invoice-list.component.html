@@ -33,12 +33,15 @@
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  <tr
+    class="clickable"
+    mat-row
+    *matRowDef="let row; columns: displayedColumns"
+    [routerLink]="'../invoice-details/' + row.number"
+  ></tr>
 
   <tr class="mat-row" *matNoDataRow>
-    <td class="mat-cell" colspan="4">
-      No data matching the filter "{{ filter.value }}"
-    </td>
+    <td class="mat-cell" colspan="4">No data</td>
   </tr>
 </table>
 

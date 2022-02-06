@@ -1,10 +1,10 @@
-:host {
-  width: 100%;
-  padding: 32px;
-}
-
 table {
   width: 100%;
+
+  .clickable:hover {
+    background-color: whitesmoke;
+    cursor: pointer;
+  }
 }
 
 mat-form-field::ng-deep {

@@ -17,15 +17,15 @@ const routes: Routes = [
       {
         path: "add-invoice",
         loadChildren: () =>
-          import("./add-invoice/add-invoice.module").then(
-            (m) => m.AddInvoiceModule
+          import("./invoice-details/invoice-details.module").then(
+            (m) => m.InvoiceDetailsModule
           ),
       },
       {
-        path: "invoice-details",
+        path: "invoice-details/:number",
         loadChildren: () =>
-          import("./invoice-detaiils/invoice-detaiils.module").then(
-            (m) => m.InvoiceDetaiilsModule
+          import("./invoice-details/invoice-details.module").then(
+            (m) => m.InvoiceDetailsModule
           ),
       },
     ],
