@@ -37,7 +37,7 @@
     class="clickable"
     mat-row
     *matRowDef="let row; columns: displayedColumns"
-    [routerLink]="'../invoice-details/' + row.number"
+    (click)="navigateToInvoiceDetails(row)"
   ></tr>
 
   <tr class="mat-row" *matNoDataRow>
@@ -46,3 +46,12 @@
 </table>
 
 <mat-paginator class="mat-elevation-z8" [pageSize]="10"></mat-paginator>
+
+<button
+  mat-raised-button
+  color="primary"
+  routerLink="/invoices/add-invoice"
+  class="invoice-list__button"
+>
+  Add new invoice
+</button>

@@ -1,7 +1,4 @@
 <mat-card>
-  <mat-card-header>
-    <mat-card-title>Invoice Details</mat-card-title>
-  </mat-card-header>
   <mat-card-content>
     <form
       class="invoice-details__form"
@@ -20,7 +17,7 @@
         <input matInput type="number" formControlName="number" />
       </mat-form-field>
 
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" *ngIf="(invoicesService.selectedInvoice | async ) === null">
         <mat-label>Vendor</mat-label>
         <mat-select formControlName="vendor">
           <mat-option
@@ -51,8 +48,9 @@
       </mat-form-field>
 
       <div class="invoice-details__form-buttons">
-        <button mat-raised-button>Cancel</button>
+        <button mat-raised-button routerLink="/invoices/invoice-list">Cancel</button>
         <button
+          *ngIf="(invoicesService.selectedInvoice | async) === null"
           type="submit"
           mat-raised-button
           color="primary"

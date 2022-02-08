@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-invoices",
@@ -6,12 +7,17 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./invoices.component.scss"],
 })
 export class InvoicesComponent implements OnInit {
-  menuItems: { label: string; link: string }[] = [
-    { label: "Invoice list", link: "invoice-list" },
-    { label: "Add invoice", link: "add-invoice" },
-  ];
+  pageTitle = "Invoices";
 
-  constructor() {}
+  constructor(private router: Router) {
+    router.events.subscribe(() => {
+      if (router.url.includes("invoice-list")) this.pageTitle = "Invoice list";
+      else if (router.url.includes("invoice-details"))
+        this.pageTitle = "Invoice details";
+      else if (router.url.includes("add-invoice"))
+        this.pageTitle = "Add invoice";
+    });
+  }
 
   ngOnInit(): void {}
 }

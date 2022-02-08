@@ -1,21 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
 
-import { InvoicesRoutingModule } from './invoices-routing.module';
-import { InvoicesComponent } from './invoices.component';
-import {MatSidenavModule} from "@angular/material/sidenav";
-import {MatListModule} from "@angular/material/list";
-
+import { InvoicesRoutingModule } from "./invoices-routing.module";
+import { InvoicesComponent } from "./invoices.component";
+import { MatToolbarModule } from "@angular/material/toolbar";
 
 @NgModule({
-  declarations: [
-    InvoicesComponent
-  ],
-  imports: [
-    CommonModule,
-    InvoicesRoutingModule,
-    MatSidenavModule,
-    MatListModule,
-  ]
+  declarations: [InvoicesComponent],
+  imports: [CommonModule, InvoicesRoutingModule, MatToolbarModule],
 })
-export class InvoicesModule { }
+export class InvoicesModule {}

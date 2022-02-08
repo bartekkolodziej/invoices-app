@@ -3,6 +3,7 @@ import { MatTableDataSource } from "@angular/material/table";
 import { Invoice } from "../../model";
 import { InvoicesService } from "../invoices.service";
 import { MatPaginator } from "@angular/material/paginator";
+import {Router} from "@angular/router";
 
 @Component({
   selector: "app-invoice-list",
@@ -16,7 +17,7 @@ export class InvoiceListComponent implements OnInit {
   // @ts-ignore
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(public invoicesService: InvoicesService) {
+  constructor(public invoicesService: InvoicesService, private router: Router) {
     this.invoicesService.invoiceList.subscribe(
       (value) => (this.dataSource.data = value)
     );
@@ -33,5 +34,10 @@ export class InvoiceListComponent implements OnInit {
 
   applyFilter(vendorName: string): void {
     this.dataSource.filter = vendorName;
+  }
+
+  navigateToInvoiceDetails(invoice: Invoice) {
+    this.invoicesService.selectInvoice(invoice);
+    this.router.navigate([`/invoices/invoice-details/${invoice.number}`]);
   }
 }

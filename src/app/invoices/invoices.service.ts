@@ -20,6 +20,10 @@ export class InvoicesService {
   public readonly vendorList: Observable<Vendor[]> =
     this._vendorList.asObservable();
 
+  private _selectedInvoice: BehaviorSubject<Invoice | null> = new BehaviorSubject<Invoice | null>(null);
+  public readonly selectedInvoice: Observable<Invoice | null> =
+      this._selectedInvoice.asObservable();
+
   constructor(private http: HttpClient) {
     this.fetchInvoiceList();
     this.fetchVendorList();
@@ -48,5 +52,9 @@ export class InvoicesService {
     });
 
     return obs;
+  }
+
+  selectInvoice(invoice: Invoice | null) {
+    this._selectedInvoice.next(invoice);
   }
 }
